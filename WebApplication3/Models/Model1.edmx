@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BanXeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DanhMuc">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DichVu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="TenDichVu" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Hinh">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="image" Type="nvarchar(max)" />
+          <Property Name="xeid" Type="int" />
+        </EntityType>
+        <EntityType Name="KhuyenMai">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="tieu_de" Type="nvarchar(max)" />
+          <Property Name="noi_dung" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="ThongTinXe">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="ten" Type="nvarchar(max)" />
+          <Property Name="gia" Type="float" />
+          <Property Name="mau_sac" Type="nvarchar(max)" />
+          <Property Name="dac_diem_noi_bat" Type="nvarchar(max)" />
+          <Property Name="thong_so_ky_thuat" Type="nvarchar(max)" />
+          <Property Name="xeid" Type="int" />
+        </EntityType>
+        <EntityType Name="Xe">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="danhmucid" Type="int" />
+        </EntityType>
+        <Association Name="FK_Hinh_Xe">
+          <End Role="Xe" Type="Self.Xe" Multiplicity="0..1" />
+          <End Role="Hinh" Type="Self.Hinh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Xe">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Hinh">
+              <PropertyRef Name="xeid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ThongTinXe_Xe">
+          <End Role="Xe" Type="Self.Xe" Multiplicity="0..1" />
+          <End Role="ThongTinXe" Type="Self.ThongTinXe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Xe">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ThongTinXe">
+              <PropertyRef Name="xeid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Xe_DanhMuc">
+          <End Role="DanhMuc" Type="Self.DanhMuc" Multiplicity="0..1" />
+          <End Role="Xe" Type="Self.Xe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DanhMuc">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Xe">
+              <PropertyRef Name="danhmucid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BanXeModelStoreContainer">
+          <EntitySet Name="DanhMuc" EntityType="Self.DanhMuc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DichVu" EntityType="Self.DichVu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hinh" EntityType="Self.Hinh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KhuyenMai" EntityType="Self.KhuyenMai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ThongTinXe" EntityType="Self.ThongTinXe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Xe" EntityType="Self.Xe" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Hinh_Xe" Association="Self.FK_Hinh_Xe">
+            <End Role="Xe" EntitySet="Xe" />
+            <End Role="Hinh" EntitySet="Hinh" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ThongTinXe_Xe" Association="Self.FK_ThongTinXe_Xe">
+            <End Role="Xe" EntitySet="Xe" />
+            <End Role="ThongTinXe" EntitySet="ThongTinXe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Xe_DanhMuc" Association="Self.FK_Xe_DanhMuc">
+            <End Role="DanhMuc" EntitySet="DanhMuc" />
+            <End Role="Xe" EntitySet="Xe" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BanXeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DanhMuc">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Xes" Relationship="Self.FK_Xe_DanhMuc" FromRole="DanhMuc" ToRole="Xe" />
+        </EntityType>
+        <EntityType Name="DichVu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="TenDichVu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Hinh">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="xeid" Type="Int32" />
+          <NavigationProperty Name="Xe" Relationship="Self.FK_Hinh_Xe" FromRole="Hinh" ToRole="Xe" />
+        </EntityType>
+        <EntityType Name="KhuyenMai">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="tieu_de" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="noi_dung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ThongTinXe">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="ten" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="gia" Type="Double" />
+          <Property Name="mau_sac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="dac_diem_noi_bat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="thong_so_ky_thuat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="xeid" Type="Int32" />
+          <NavigationProperty Name="Xe" Relationship="Self.FK_ThongTinXe_Xe" FromRole="ThongTinXe" ToRole="Xe" />
+        </EntityType>
+        <EntityType Name="Xe">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="danhmucid" Type="Int32" />
+          <NavigationProperty Name="DanhMuc" Relationship="Self.FK_Xe_DanhMuc" FromRole="Xe" ToRole="DanhMuc" />
+          <NavigationProperty Name="Hinhs" Relationship="Self.FK_Hinh_Xe" FromRole="Xe" ToRole="Hinh" />
+          <NavigationProperty Name="ThongTinXes" Relationship="Self.FK_ThongTinXe_Xe" FromRole="Xe" ToRole="ThongTinXe" />
+        </EntityType>
+        <Association Name="FK_Xe_DanhMuc">
+          <End Role="DanhMuc" Type="Self.DanhMuc" Multiplicity="0..1" />
+          <End Role="Xe" Type="Self.Xe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DanhMuc">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Xe">
+              <PropertyRef Name="danhmucid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hinh_Xe">
+          <End Role="Xe" Type="Self.Xe" Multiplicity="0..1" />
+          <End Role="Hinh" Type="Self.Hinh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Xe">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Hinh">
+              <PropertyRef Name="xeid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ThongTinXe_Xe">
+          <End Role="Xe" Type="Self.Xe" Multiplicity="0..1" />
+          <End Role="ThongTinXe" Type="Self.ThongTinXe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Xe">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ThongTinXe">
+              <PropertyRef Name="xeid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BanXeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DanhMucs" EntityType="Self.DanhMuc" />
+          <EntitySet Name="DichVus" EntityType="Self.DichVu" />
+          <EntitySet Name="Hinhs" EntityType="Self.Hinh" />
+          <EntitySet Name="KhuyenMais" EntityType="Self.KhuyenMai" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="ThongTinXes" EntityType="Self.ThongTinXe" />
+          <EntitySet Name="Xes" EntityType="Self.Xe" />
+          <AssociationSet Name="FK_Xe_DanhMuc" Association="Self.FK_Xe_DanhMuc">
+            <End Role="DanhMuc" EntitySet="DanhMucs" />
+            <End Role="Xe" EntitySet="Xes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hinh_Xe" Association="Self.FK_Hinh_Xe">
+            <End Role="Xe" EntitySet="Xes" />
+            <End Role="Hinh" EntitySet="Hinhs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ThongTinXe_Xe" Association="Self.FK_ThongTinXe_Xe">
+            <End Role="Xe" EntitySet="Xes" />
+            <End Role="ThongTinXe" EntitySet="ThongTinXes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BanXeModelStoreContainer" CdmEntityContainer="BanXeEntities">
+          <EntitySetMapping Name="DanhMucs">
+            <EntityTypeMapping TypeName="BanXeModel.DanhMuc">
+              <MappingFragment StoreEntitySet="DanhMuc">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DichVus">
+            <EntityTypeMapping TypeName="BanXeModel.DichVu">
+              <MappingFragment StoreEntitySet="DichVu">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="TenDichVu" ColumnName="TenDichVu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hinhs">
+            <EntityTypeMapping TypeName="BanXeModel.Hinh">
+              <MappingFragment StoreEntitySet="Hinh">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="xeid" ColumnName="xeid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KhuyenMais">
+            <EntityTypeMapping TypeName="BanXeModel.KhuyenMai">
+              <MappingFragment StoreEntitySet="KhuyenMai">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tieu_de" ColumnName="tieu_de" />
+                <ScalarProperty Name="noi_dung" ColumnName="noi_dung" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BanXeModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ThongTinXes">
+            <EntityTypeMapping TypeName="BanXeModel.ThongTinXe">
+              <MappingFragment StoreEntitySet="ThongTinXe">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ten" ColumnName="ten" />
+                <ScalarProperty Name="gia" ColumnName="gia" />
+                <ScalarProperty Name="mau_sac" ColumnName="mau_sac" />
+                <ScalarProperty Name="dac_diem_noi_bat" ColumnName="dac_diem_noi_bat" />
+                <ScalarProperty Name="thong_so_ky_thuat" ColumnName="thong_so_ky_thuat" />
+                <ScalarProperty Name="xeid" ColumnName="xeid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Xes">
+            <EntityTypeMapping TypeName="BanXeModel.Xe">
+              <MappingFragment StoreEntitySet="Xe">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="danhmucid" ColumnName="danhmucid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

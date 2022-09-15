@@ -1,0 +1,52 @@
+﻿@model WebApplication3.Models.ThongTinXe
+
+@{
+    ViewBag.Title = "EditProduct";
+}
+
+
+<h2>Chỉnh sửa xe</h2>
+
+
+@using (Html.BeginForm("UpdateProduct", "Admin", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.id, new { @class = "form-control" }) <br>
+
+<div class="mb-3">
+    <label for="ten" class="form-label">Tên xe: </label><br>
+    @Html.TextBoxFor(m => m.ten, new { @class = "form-control" }) <br>
+</div>
+
+<div class="mb-3">
+    <label for="thong_so_ky_thuat" class="form-label">Loại xe: </label><br>
+    @Html.TextAreaFor(m => m.thong_so_ky_thuat, new { @class = "form-control" }) <br>
+</div>
+
+<div class="mb-3">
+    <label for="danhmucid" class="form-label">Hãng xe: </label><br>
+    @Html.DropDownListFor(m => m.danhmucid,
+    new SelectList(ViewBag.danhMucs, "id", "name"),
+    new { @class = "form-control" }) <br>
+</div>
+
+<div class="mb-3">
+    <label for="gia" class="form-label">Giá: </label><br>
+    @Html.TextBoxFor(m => m.gia, new { @class = "form-control" }) <br>
+</div>
+
+<div class="mb-3">
+    <label for="mau" class="form-label">Màu: </label><br>
+    @Html.TextBoxFor(m => m.mau_sac, new { @class = "form-control" }) <br>
+</div>
+
+<div class="mb-3">
+    <label for="hinh" class="form-label">Hình: </label><br>
+    @Html.TextBoxFor(m => m.hinh, new { @class = "form-control" }) <br>
+</div>
+
+<input type="submit" value="Submit" class="btn btn-primary" />
+}
+
+
+
+

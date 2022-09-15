@@ -1,0 +1,20 @@
+﻿@model WebApplication3.Models.DanhMuc
+
+@{
+    ViewBag.Title = "EditBrand";
+}
+
+<h2>Chỉnh sửa xe</h2>
+
+@using (Html.BeginForm("UpdateBrand", "Admin", FormMethod.Post))
+{
+
+    <div class="mb-3">
+        @Html.HiddenFor(m => m.id, new { @class = "form-control" }) <br>
+        <label for="name" class="form-label">Hãng: </label><br>
+        @Html.TextBoxFor(m => m.name, new { @class = "form-control" }) <br>
+    </div>
+
+    <input type="submit" value="Submit" class="btn btn-primary" />
+}
+

@@ -1,0 +1,17 @@
+﻿@model WebApplication3.Models.ThongTinXe
+
+@{
+    ViewBag.Title = "ProductDetails";
+}
+
+        <img src="~/Content/image/@Model.hinh" style="width: 300px; height:300px" />
+        <ul style="font-size : x-large">
+            <li> Mã xe: @Model.id </li>
+            <li> Tên xe: @Model.ten </li>
+            <li> Hãng: @Model.DanhMuc.name</li>
+            <li> Loại xe: @Model.thong_so_ky_thuat </li>
+            <li> Màu: @Model.mau_sac </li>
+            <li> Giá: @Model.gia </li>
+        </ul>
+        </div>
+

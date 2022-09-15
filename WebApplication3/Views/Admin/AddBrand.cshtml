@@ -1,0 +1,144 @@
+﻿@model WebApplication3.Models.DanhMuc
+
+@{
+    ViewBag.Title = "AddBrand";
+}
+    <html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link href="http://hsu.vn/resources/template/uoe/css/widget.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link href="http://hsu.vn/resources/template/uoe/css/owl.carousel.css" rel="stylesheet">
+        @Styles.Render("~/Content/css/style1.css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <div class="top_bar_1" style="background-color:#e72300">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="pull-left">
+                            <em class="contct_2">
+                                <i class="fa fa-phone"></i><a href="#" style="color: #FFF">0906.800.096 </a>
+                                <i class="fa fa-facebook"></i><a href="#" style="color: #FFF">fb.com/hondahungphu</a>
+                                <span>&nbsp; &nbsp; &nbsp;</span>
+                                <a>
+                                    <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/united-kingdom-3-571630.png" style="width: 20px; height: 0;">
+                                </a>
+                                <span> &nbsp; </span>
+                                <a>
+                                    <img src="https://cdn3.iconfinder.com/data/icons/finalflags/256/Vietnam-Flag.png" style="width: 20px; height: 0;">
+                                </a>
+                            </em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="thanh navbar navbar-expand-md" style="padding-left: 80px; background-color: black; height: 180px">
+            <div class="col-sm-3">
+                <a class="navbar-brand" href="#"><img style="width: 150px; height: 140px; padding-bottom : 50px" src="https://static.vecteezy.com/system/resources/previews/003/649/844/non_2x/hp-logo-monogram-with-slash-style-design-template-free-vector.jpg"></a>
+            </div>
+        </nav><br /><br />
+        <h2 style="text-align :center; color : black; font-size : 40px">Thêm hãng</h2>
+        <br />
+        @using (Html.BeginForm("SaveBrand", "Admin", FormMethod.Post))
+        {
+            <div class="mb-3">
+                <label for="name" class="form-label" style="color:black; font-size:large">Tên Hãng: </label><br>
+                @Html.TextBoxFor(m => m.name, new { @class = "form-control" })  <br>
+            </div>
+
+            <input type="submit" value="Submit" class="btn btn-primary" style=" width: 3%; height : 4%" />
+        }
+
+
+
+
+        <footer id="footer">
+            <div class="container-fluid" style="padding-left: 50px;padding-right: 100px;padding-top: 30px;padding-bottom: 70px;">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="widget widget-contact">
+                            <h5>Thông tin Doanh Nghiệp</h5>
+                            <hr style="color: #fff;">
+                            <ul style="padding-left: 1px;">
+                                <li>
+                                    <a style="text-decoration: none; color: aliceblue;">
+                                        <p style="font-weight: 1000;font-size: 15px;">CÔNG TY TNHH THƯƠNG MẠI VÀ DỊCH VỤ HƯNG PHÚ<br></p>
+                                        Tự hào là nhà phân phối sản phẩm xe máy, phụ tùng và dịch vụ bảo trì xe chất lượng cao hàng đầu tại TP.HCM, Công ty TNHH Xe Máy Hưng Phú đã nhiều năm liền được tôn vinh là một trong những TOP Công ty xuất sắc nhất trên toàn quốc của Honda Việt Nam kể từ khi thành lập 10/2010 cho đến nay.
+                                        <br>
+                                        <p style="font-weight: 1000; font-size: 20px; color: aliceblue;">Giờ Làm Việc</p>
+                                        8h - 20h hàng ngày (bao gồm cả ngày lễ)
+                                        <p style="font-weight: 1000; font-size: 20px; color: aliceblue;">Diễn Đàn Nội Bộ</p>
+                                        Dành cho nhân viên Hưng Phú
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 p2">
+                        <div class="widget widget-contact">
+                            <h5>HỆ THỐNG CỬA HÀNG</h5>
+                            <ul style="padding-left: 10px;">
+                                <li>
+                                    <a style="text-decoration: none">
+                                        <p style="font-weight: 1000; font-size: 15px; color: aliceblue;"> Motor Hưng Phú: 02 Lãnh Binh Thăng – Phường 13 – Quận 11 – TP. Hồ Chí Minh – ĐT: 090 681 81 84</p>
+                                        <p style="font-weight: 1000; font-size: 15px; color: aliceblue;">Hưng Phú #1: 335 Lê Đại Hành – Phường 13 – Quận 11 – TP. Hồ Chí Minh – ĐT: (028) 3962 1091</p>
+                                        <p style="font-weight: 1000; font-size: 15px; color: aliceblue;">Hưng Phú #2: 631 - 635 - 639 Phạm Thế Hiển – Phường 4 – Quận 8 – TP. Hồ Chí Minh – ĐT: (028) 3852 1108</p>
+                                        <p style="font-weight: 1000; font-size: 15px; color: aliceblue;">Hưng Phú #3: 34 – 40 Hòa Bình – Phường 5 – Quận 11 – TP. Hồ Chí Minh – ĐT: (028) 3975 6968	</p>
+                                        <p style="font-weight: 1000; font-size: 15px; color: aliceblue;">Hưng Phú #4: 290 Dương Bá Trạc – Phường 1 – Quận 8 – TP. Hồ Chí Minh – ĐT: (028) 3852 5101</p>
+                                        <p style="font-weight: 1000; font-size: 15px; color: aliceblue;">Hưng Phú #5: 355 Phú Lợi – Phường Phú Lợi – Thủ Dầu Một – T.Bình Dương – ĐT: (0274) 386 8355</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="widget widget-contact">
+                            <h5>ĐƯỜNG DÂY NÓNG</h5>
+                            <ul style="padding-left: 1px;">
+                                <li>
+                                    &#9743 HOTLINE:
+                                    <a style="color: red;" href="#"> (028)39.253.484 </a>
+                                </li>
+                                <li>
+                                    Fanpage:
+                                    <a style="color: #e72300;" href="https://www.facebook.com/ntphu24072001" class="a-mailto">hungphu@honda.com.vn</a>
+                                </li>
+                                <li>
+                                    Email:
+                                    <a style="color: #e72300;" href="https://www.facebook.com/ntphu24072001" class="a-mailto">ask@honda.com.vn</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-end" style="padding-left: 85px;padding-right: 290px;">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div>
+                                <a href="#"><img style="width: 200px; height: auto" src="https://www.honda.com.vn/images/logoSaleNoti.png" alt=""></a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8" style="text-align: right">
+                            <p> © 2019. Copyright by Honda VietNam </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+    </html>
+
+
+
